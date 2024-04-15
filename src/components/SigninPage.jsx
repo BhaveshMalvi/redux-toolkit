@@ -21,8 +21,7 @@ function Signin() {
 
   const navigate =   useNavigate()
 
-
-  const firebaseSignIn = useFirebaseAuth()
+  const firebaseSignIn = useFirebaseAuth()  // custom hook useFirebseAuth....
   // console.log(firebaseSignIn);
 
   const handleSignIn = () => {

@@ -25,6 +25,8 @@ const Navbar = () => {
 
             <span className='logo' style={{marginLeft:"20px"}}><SiReactivex style={{ height: "60px", width: "60px", color: "#51347e" }} /></span>
 
+            <button>Logout</button>
+
             <div style={{ display: "flex", justifyContent: "end", width: "70%", alignItems: "center", padding: "10px 0 10px 0" }}>
                 <Category />
                 <Link className='navLink' to='/' ><h2>Home <span><SiHomeassistantcommunitystore style={{color: isHome ? "#7335d3": "black" }} /></span> </h2></Link>
