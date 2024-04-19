@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   MDBContainer,
   MDBCol,
@@ -12,25 +12,36 @@ from 'mdb-react-ui-kit';
 
 import {useNavigate} from 'react-router-dom'
 import { useFirebaseAuth } from '../Firebase/Context/FirebaseContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { currentUser } from '../redux-toolkit/userDataSlice';
 
 function Signin() {
 
+  const dispatch = useDispatch()
+  const selectUserData = useSelector(state => state.userData)
 
   const [email, setEmail] = useState('')
   const [passwd, setPasswd] = useState('')
-
+  console.log("username", selectUserData);
   const navigate =   useNavigate()
 
   const firebaseSignIn = useFirebaseAuth()  // custom hook useFirebseAuth....
   // console.log(firebaseSignIn);
+  firebaseSignIn.getUserData(selectUserData)
+
 
   const handleSignIn = () => {
     firebaseSignIn.signIn(email, passwd)
+    // firebaseSignIn.getUserData(selectUserData)
     .then(() => 
-    navigate('/')
+    navigate('/'),
+    dispatch(currentUser(email))
   ).catch(() => alert(`invalid  ${email}`)
   )
   }
+
+
+  useEffect(() => {}, [])
 
   return (
    

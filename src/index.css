@@ -193,5 +193,52 @@ scrollbar-width: none;
 
 
 
+.css-1t8x7v1:hover >.ps-menu-button:hover, .css-16jesut:hover >.ps-menu-button:hover, .css-1tqrhto:hover >.ps-menu-button:hover{
+  background-color: red;
+  color: white;
+  font-size: 2rem;
+  margin-right: 10px;
+  border-radius: 0px 20px 20px 0;
+}
+
+
+.css-dip3t8{
+  box-shadow: inset -10px -10px 0px 0px #502593;
+    border-radius: 0px 40px 40px 0px;
+}
+
+.css-1wvake5.ps-broken.ps-toggled{
+  border-radius: 0px 40px 40px 0px;
+}
+
+.manubar{
+  /* background-color: #e4e4e4; */
+  padding: 5px;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  color: #4f4f4f;
+}
+option {
+  position: fixed;
+  z-index: 2;
+}
+.manubar:hover{
+  background-color: red;
+  color: white;
+  font-size: 2rem;
+  margin-right: 10px;
+  border-radius: 0px 20px 20px 0;
+}
+
+
+
+
+
+
+
+
+
 
 

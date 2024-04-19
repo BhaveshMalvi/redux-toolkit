@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import {getFirestore, collection, addDoc} from 'firebase/firestore'
+
 
 
 
@@ -15,23 +17,38 @@ import {
   MDBCheckbox
 }
 from 'mdb-react-ui-kit';
-import { useFirebaseAuth, useFirebaseSignup } from '../Firebase/Context/FirebaseContext';
+import { FirebaseApp, useFirebaseAuth } from '../Firebase/Context/FirebaseContext';
+
 
 function SignUp() {
 
   const [email, setEmail] = useState('');
   const [passwd, setPasswd] = useState('');
+  const [fname, setFname] = useState('');
+  const [lname, setLname] = useState('');
 
 
   const loginDataFirebase = useFirebaseAuth() // call custom hook useFirebaseAuth
   // console.log(loginDataFirebase.signup());
 
+  const firebaseStoredb = getFirestore(FirebaseApp)
+
+  console.log(firebaseStoredb);
+
 
   const navigate = useNavigate()
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     navigate('/signin')
     loginDataFirebase.signup(email, passwd)
+    return await addDoc(collection(firebaseStoredb, "signupUsers"), {
+      first_Name:fname,
+      last_Name:lname,
+      email:email,
+    })
+
+    
+
   }
 
   return (
@@ -46,13 +63,25 @@ function SignUp() {
               <h2 className="fw-bold mb-5">Sign up now</h2>
 
               <MDBRow>
-                {/* <MDBCol col='6'>
-                  <MDBInput wrapperClass='mb-4' label='First name' id='form1' type='text'/>
-                </MDBCol> */}
+                <MDBCol col='6'>
+                  <MDBInput 
+                  wrapperClass='mb-4' 
+                  label='First name' 
+                  id='form1' 
+                  type='text'
+                  onChange={(e) => setFname(e.target.value)}
+                  />
+                </MDBCol>
 
-                {/* <MDBCol col='6'>
-                  <MDBInput wrapperClass='mb-4' label='Last name' id='form2' type='text'/>
-                </MDBCol> */}
+                <MDBCol col='6'>
+                  <MDBInput 
+                  wrapperClass='mb-4' 
+                  label='Last name' 
+                  id='form2' 
+                  type='text'
+                  onChange={(e) => setLname(e.target.value)}
+                  />
+                </MDBCol>
               </MDBRow>
 
               <MDBInput 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {  useDispatch, useSelector } from 'react-redux'
 import { filterItem, products } from '../redux-toolkit/filterSlice'
 import { useNavigate } from 'react-router-dom'
+import { Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
 
 function Category() {
 
@@ -17,10 +18,12 @@ function Category() {
 
 
     const handleFilterData = (e) => {
-        let optionVal = e.target.value;
+        // let optionVal = e.target.value;
+        let optionVal = e;
         // console.log(optionVal);
         navigate('/')
-        if(e.target.value === "all"){
+        // if(e.target.value === "all"){
+        if(e === "all"){
             setFilter(data)
             dispatchFilter(filterItem(data))
             dispatchFilter(products(true))
@@ -54,15 +57,26 @@ function Category() {
 
     <>
 
-    <div >
-        <select onChange={(e) => handleFilterData(e)}>
-            <option  value="all">All</option>
-            <option value="men's clothing">Men</option>
-            <option value="women's clothing">Women</option>
-            <option value="jewelery">jewelery</option>
-            <option value="electronics">electronics</option>
+    {/* <div >
+        <select className='manubar' onChange={(e) => handleFilterData(e)}>
+            <option  className='manubar' value="all">All</option>
+            <option  className='manubar' value="men's clothing">Men</option>
+            <option  className='manubar' value="women's clothing">Women</option>
+            <option  className='manubar' value="jewelery">jewelery</option>
+            <option  className='manubar' value="electronics">electronics</option>
         </select>
-    </div>
+    </div> */}
+
+        <Menu >
+
+      <SubMenu label="Products"  >
+                      <MenuItem className="manubar" onClick={()=> handleFilterData("all")}  > All</MenuItem>
+                      <MenuItem className="manubar" onClick={()=> handleFilterData("men's clothing")} > Men</MenuItem>
+                      <MenuItem className="menubar" onClick={()=> handleFilterData("women's clothing")} > women</MenuItem>
+                      <MenuItem className="menubar" onClick={()=> handleFilterData("jewelery")} > jewelery</MenuItem>
+                      <MenuItem className="menubar" onClick={()=> handleFilterData("electronics")} >electronics</MenuItem>
+                    </SubMenu>
+                    </Menu>
 
 
     </>

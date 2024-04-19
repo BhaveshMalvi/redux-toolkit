@@ -8,18 +8,32 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { FirebaseContextProvider } from './Firebase/Context/FirebaseContext';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import store from './redux-toolkit/store';
 // import { Provider } from 'react-redux';
 // import store from '../src/redux-toolkit/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+let persistor = persistStore(store)
+
 root.render(
   // <React.StrictMode>
-  <FirebaseContextProvider>
+    <Provider store={store}>
+  <PersistGate persistor={persistor}>
+      <FirebaseContextProvider>
 
   <BrowserRouter>
+
     <App  />
   </BrowserRouter>
   </FirebaseContextProvider>
+  </PersistGate>
+
+  </Provider>
+
   // </React.StrictMode>
 
   // // Redux Toolkit (We can also Wrap "Provider" in App.js)
