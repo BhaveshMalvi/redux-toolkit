@@ -45,7 +45,7 @@ const Cart = () => {
   if (cartProducts.length === 0) {
     return (
       <>
-        <Navbar />
+        <Navbar  />
         <h1 style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100%", height:"70vh", color:"yellow"}}> Opps! Cart is Empty, You have not selected any Item</h1>
       </>
     );

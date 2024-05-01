@@ -6,23 +6,29 @@ export const filterSlice = createSlice({
         filterData : {},
         isSelect : false,
         isProduct: true,
+        searchQuery: ""
     },
     reducers: {
 
         filterItem : (state, action) => {
             state.filterData = action.payload
-            state.isSelect = true
+            state.isSelect = true 
             // console.log(state.isSelect);
         },
         products : (state, action) => {
             state.isProduct = action.payload
             // console.log("product", state.isProduct);
-        }
+        },
+
+        setSearchQuery(state, action) {
+            state.searchQuery = action.payload;
+          },
+
        
     }
 })
 
-export const {filterItem, isSelect,products} = filterSlice.actions
+export const {filterItem, isSelect,products, setSearchQuery} = filterSlice.actions
 
 export default filterSlice.reducer
 

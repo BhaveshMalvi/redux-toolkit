@@ -25,7 +25,7 @@ const Products = () => {
     // // or 
     const { data, status } = useSelector((state) => state.product)
 
-    const {filterData, isSelect, isProduct} = useSelector(state => state.filter)
+    const {filterData, isSelect, isProduct, searchQuery} = useSelector(state => state.filter)
 
     const navigate = useNavigate()
 
@@ -64,80 +64,141 @@ const Products = () => {
     }
 
 
-    if (isProduct) {
-        return (
+    // if (isProduct) {
+    //     return (
 
-            <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(4, 1fr)', 
-                gap: '30px' ,
+    //         <div style={{ 
+    //             display: 'grid', 
+    //             gridTemplateColumns: 'repeat(4, 1fr)', 
+    //             gap: '30px' ,
             
-            }}>
+    //         }}>
     
+    //             {
+    //                 // products.map((item) => {
+    //                 data.map((item) => {
+    
+    //                     return (
+    
+    //                         <div className='card ' key={item.id} >
+    //                             <div style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100%", padding:"10px"}}>
+    
+    //                             <img src={item.image} alt="" style={{width:"80px", height:"80px"}}  />
+    //                             </div>
+    
+    //                             <h4>{item.title}</h4>
+    
+    //                             <h3>price:{item.price}</h3>
+    
+    //                             <button className='btn' onClick={() => addToCart(item)}> Explore more.. </button>
+    
+    //                         </div>
+    //                     )
+    
+    //                 })
+    
+    //             }
+    
+    //         </div>
+    
+    //     )
+    // } 
+
+    // else if(isSelect){
+    //     return (
+
+    //         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px'  }}>
+    
+    //             {
+    //                 // products.map((item) => {
+    //                 filterData.map((item) => {
+    
+    //                     return (
+    
+    //                         <div className='card ' key={item.id} >
+    //                             <div style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100%", padding:"10px"}}>
+    
+    //                             <img src={item.image} alt="" style={{width:"80px", height:"80px"}}  />
+    //                             </div>
+    
+    //                             <h4>{item.title}</h4>
+    
+    //                             <h3>price:{item.price}</h3>
+    
+    //                             <button className='btn' onClick={() => addToCart(item)}> Explore more.. </button>
+    
+    //                         </div>
+    //                     )
+    
+    //                 })
+    
+    //             }
+    
+    //         </div>
+    
+    //     )
+    // }
+
+
+
+    // else{
+        return (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px' }}>
                 {
-                    // products.map((item) => {
+                isProduct ? (
+                    // Render all products if not searching
                     data.map((item) => {
     
-                        return (
-    
-                            <div className='card ' key={item.id} >
-                                <div style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100%", padding:"10px"}}>
-    
-                                <img src={item.image} alt="" style={{width:"80px", height:"80px"}}  />
-                                </div>
-    
-                                <h4>{item.title}</h4>
-    
-                                <h3>price:{item.price}</h3>
-    
-                                <button className='btn' onClick={() => addToCart(item)}> Explore more.. </button>
-    
-                            </div>
-                        )
-    
-                    })
-    
-                }
-    
-            </div>
-    
-        )
-    } 
-
-    else if(isSelect){
-        return (
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px'  }}>
-    
-                {
-                    // products.map((item) => {
+                                            return (
+                        
+                                                <div className='card ' key={item.id} >
+                                                    <div style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100%", padding:"10px"}}>
+                        
+                                                    <img src={item.image} alt="" style={{width:"80px", height:"80px"}}  />
+                                                    </div>
+                        
+                                                    <h4>{item.title}</h4>
+                        
+                                                    <h3>price:{item.price}</h3>
+                        
+                                                    <button className='btn' onClick={() => addToCart(item)}> Explore more.. </button>
+                        
+                                                </div>
+                                            )
+                        
+                                        })
+                        
+                        //             }
+                ) : (
+                    // Render filtered products if searching
                     filterData.map((item) => {
     
-                        return (
-    
-                            <div className='card ' key={item.id} >
-                                <div style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100%", padding:"10px"}}>
-    
-                                <img src={item.image} alt="" style={{width:"80px", height:"80px"}}  />
-                                </div>
-    
-                                <h4>{item.title}</h4>
-    
-                                <h3>price:{item.price}</h3>
-    
-                                <button className='btn' onClick={() => addToCart(item)}> Explore more.. </button>
-    
-                            </div>
-                        )
-    
-                    })
-    
-                }
-    
+                                            return (
+                        
+                                                <div className='card ' key={item.id} >
+                                                    <div style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100%", padding:"10px"}}>
+                        
+                                                    <img src={item.image} alt="" style={{width:"80px", height:"80px"}}  />
+                                                    </div>
+                        
+                                                    <h4>{item.title}</h4>
+                        
+                                                    <h3>price:{item.price}</h3>
+                        
+                                                    <button className='btn' onClick={() => addToCart(item)}> Explore more.. </button>
+                        
+                                                </div>
+                                            )
+                        
+                                        })
+                        
+                                    // }
+                )
+            }
             </div>
+        );
     
-        )
-    }
+    // }
 
 
    

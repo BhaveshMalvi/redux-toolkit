@@ -233,6 +233,24 @@ option {
 }
 
 
+.search_input{
+  padding: 0.5rem 3rem;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: inset 0px 0px 16px 4px #3f1089;
+  font-size: larger;
+  font-weight: 900;
+
+}
+
+.searchIcon{
+  width: 60px;
+  padding-top: 10px;
+  font-size: 40px;
+  color: brown;
+  position: absolute;
+}
+
 
 
 

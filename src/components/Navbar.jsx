@@ -6,13 +6,20 @@ import { FaCartPlus } from "react-icons/fa";
 import { SiHomeassistantcommunitystore } from "react-icons/si";
 import { useFirebaseAuth } from "../Firebase/Context/FirebaseContext";
 import SidebarComp from "./SidebarComp";
-import { memo } from "react";
+import SearchProducts from "./SearchProduct";
+import { MdSavedSearch } from "react-icons/md";
+
+
+
+
+
 
 const Navbar = () => {
   // //useSelector is works as "Subscriber". It gives all data from state, When data is changed or updated.
   const productCount = useSelector((state) => state.cart);
   const location = useLocation();
   const navigate = useNavigate();
+
 
   const logOut = useFirebaseAuth();
   const getUserDataFromStore = useFirebaseAuth();
@@ -26,14 +33,15 @@ const Navbar = () => {
   const [userData, setUserData] = useState();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const displayName = async () => {
-    let data = await getUserDataFromStore
-      .getUserData(selectUserData.currentUser)
-      .then((resp) => resp);
-    // console.log("data", data);
-    setUserData(data)
-    setUser((data.first_Name + " " + data.last_Name).toUpperCase());
-  };
+  // const displayName = async () => {
+  //   let data = await getUserDataFromStore
+  //     .getUserData(selectUserData.currentUser)
+  //     .then((resp) => resp);
+  //   // console.log("data", data);
+  //   setUserData(data)
+  //   setUser((data.first_Name + " " + data.last_Name).toUpperCase());
+  // };
+
 
 
   const isHome = location.pathname === "/";
@@ -45,11 +53,23 @@ const Navbar = () => {
   //    console.log("logOut",logOut);
   //  }
 
+
   useEffect(() => {
+    const displayName = async () => {
+      let data = await getUserDataFromStore
+        .getUserData(selectUserData.currentUser)
+        .then((resp) => resp);
+      // console.log("data", data);
+      setUserData(data)
+      setUser((data.first_Name + " " + data.last_Name).toUpperCase());
+    };
     displayName();
+  }, [ isHome, isCart])
+
+  useEffect(() => {
     getUserDataFromStore.getUserData();
     logOut.getUserData(selectUserData.currentUser);
-  }, []);
+  }, [isHome, isCart]);
 
   if (true) {
     return (
@@ -73,12 +93,12 @@ const Navbar = () => {
         {/* {nameUser}   */}
         {user && (
           <div>
-            <h1 style={{fontWeight:"bolder", color:"brown"}}> {user}</h1>
+            <h1 style={{fontWeight:"bolder", color:"brown", width:"max-content", padding:"2rem"}}> {user}</h1>
             {/* Render other user data as needed */}
           </div>
         )}
 
-        <div></div>
+       
 
         {/* <button onClick={() => handleSignout()} style={{background:"red", border:"none", borderRadius:"10px", padding:"0.5rem", color:"white", boxShadow:"inset #790c0c 1px 0px 9px 4px"}}>Logout</button> */}
 
@@ -91,6 +111,9 @@ const Navbar = () => {
             padding: "10px 0 10px 0",
           }}
         >
+           <div style={{display:"flex"}}>
+          <MdSavedSearch className="searchIcon" />  <SearchProducts />
+        </div>
           {/* <Category /> */}
           <Link className="navLink" to="/">
             <h2>
@@ -136,7 +159,7 @@ const Navbar = () => {
   }
 };
 
-export default memo(Navbar);
+export default Navbar;
 
 
 
