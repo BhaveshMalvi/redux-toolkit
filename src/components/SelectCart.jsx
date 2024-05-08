@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { HiPlusCircle, HiMinusCircle } from "react-icons/hi";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcAbout } from "react-icons/fc";
 import { addProducts, removeUpdateProduct } from '../redux-toolkit/cartSlice';
 import { isCart, isSelectedItem, quentity, selectedCart } from '../redux-toolkit/selectCartSlice';
@@ -9,6 +9,8 @@ import { GiCancel } from "react-icons/gi";
 
 function SelectCart() {
 
+    const {state} = useLocation()
+    // console.log(state);
 
     const selectCart = useSelector(state => state.selectCart.cartItem)
     const selectUpdateCart = useSelector(state => state.selectCart.cartItem)
@@ -17,6 +19,7 @@ function SelectCart() {
 //   const selectQuentity = useSelector((state) => state.selectCart.quentity)
 
     const isSelectedItem = useSelector(state => state.cart)
+    // console.log(isSelectedItem);
 
 
 
@@ -61,10 +64,18 @@ function SelectCart() {
     }
 
     const goToCartUpdate = (id) => {
-        dispatch(removeUpdateProduct(id))
-        dispatch(addProducts({cart: selectUpdateCart, qty: updatenum, isSelectedProduct:true }))
-        dispatch(isCart(true))
-        
+        // dispatch(removeUpdateProduct(id))
+        // dispatch(addProducts({cart: selectUpdateCart, qty: updatenum, isSelectedProduct:true }))
+        // dispatch(isCart(true))
+
+
+        let a = [...isSelectedItem]
+        console.log("a",a);
+        a.splice(state.index, 1, {...cart, quentity : updatenum})
+
+        dispatch(removeUpdateProduct(a))
+
+        setCart(cart)
         navigate('/cart')
 
     }

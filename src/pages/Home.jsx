@@ -9,7 +9,7 @@ import Navbar from '../components/Navbar';
 const Home = () => {
   return (
       <>
-      <Navbar val= {true} />
+      {/* <Navbar val= {true} /> */}
   
     <div>
 

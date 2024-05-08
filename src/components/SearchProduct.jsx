@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { filterItem, products, setSearchQuery } from '../redux-toolkit/filterSlice'
 
 
-
 const SearchProducts = () => {
 
     const dispatch = useDispatch()

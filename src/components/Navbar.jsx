@@ -1,5 +1,5 @@
 // //
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FaCartPlus } from "react-icons/fa";
@@ -14,11 +14,13 @@ import { MdSavedSearch } from "react-icons/md";
 
 
 
-const Navbar = () => {
+const Navbar = ({name}) => {
   // //useSelector is works as "Subscriber". It gives all data from state, When data is changed or updated.
   const productCount = useSelector((state) => state.cart);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const user = 12;
 
 
   const logOut = useFirebaseAuth();
@@ -29,7 +31,7 @@ const Navbar = () => {
   // console.log("selectUserData", selectUserData);
   //   console.log(getUserDataFromStore.getUserData())
 
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
   const [userData, setUserData] = useState();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -54,22 +56,33 @@ const Navbar = () => {
   //  }
 
 
-  useEffect(() => {
-    const displayName = async () => {
-      let data = await getUserDataFromStore
-        .getUserData(selectUserData.currentUser)
-        .then((resp) => resp);
-      // console.log("data", data);
-      setUserData(data)
-      setUser((data.first_Name + " " + data.last_Name).toUpperCase());
-    };
-    displayName();
-  }, [ isHome, isCart])
+  // useEffect(() => {
+  //   const displayName = async () => {
+  //     let data = await getUserDataFromStore
+  //       .getUserData(selectUserData.currentUser)
+  //       .then((resp) => resp);
+  //     // console.log("data", data);
+  //     setUserData(data)
+  //     // setUser((data.first_Name + " " + data.last_Name).toUpperCase());
+  //   };
+  //   displayName();
+  // }, [ isHome, isCart])
 
-  useEffect(() => {
-    getUserDataFromStore.getUserData();
-    logOut.getUserData(selectUserData.currentUser);
-  }, [isHome, isCart]);
+  // useEffect(() => {
+  //   getUserDataFromStore.getUserData();
+  //   logOut.getUserData(selectUserData.currentUser);
+  // }, [isHome, isCart]);
+
+  // console.log("user", user);
+  const renderName = useMemo(() => ( name
+    // <>
+    // <h1 style={{ color: '#51347e' }}>{name}</h1>
+    // </>
+), [user])
+
+console.log("qwer", renderName);
+
+
 
   if (true) {
     return (
@@ -89,14 +102,18 @@ const Navbar = () => {
         }}
       >
         {/* <span className='logo' style={{marginLeft:"20px"}}><SiReactivex style={{ height: "60px", width: "60px", color: "#51347e" }} /></span> */}
-        <SidebarComp user = {{userData, user}} />
+        <SidebarComp user = {name} />
         {/* {nameUser}   */}
-        {user && (
+        {/* {renderName
+         && (
           <div>
             <h1 style={{fontWeight:"bolder", color:"brown", width:"max-content", padding:"2rem"}}> {user}</h1>
-            {/* Render other user data as needed */}
           </div>
-        )}
+        )} */}
+
+        {/* {renderName} */}
+         <h1 style={{ color: '#51347e' }}>{name}</h1>
+
 
        
 

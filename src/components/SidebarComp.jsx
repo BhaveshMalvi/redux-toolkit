@@ -13,7 +13,7 @@ function SidebarComp({user}) {
   const navigate = useNavigate()
   const signOut = useFirebaseAuth()
   // console.log(signOut);
-  console.log(user.user);
+  console.log(user);
 
 
 
@@ -46,10 +46,10 @@ function SidebarComp({user}) {
                         <span> <input type="image" src={imageuser} alt=""  width="60" height="60" style={{marginLeft:"5px"}}/>
                         </span>
                       <span style={{fontWeight:"bolder", color:"red"}}><br/>
-                      {(user.user)}
+                      {(user)}
                       </span>
                       <h1 style={{fontSize:"large"}}>
-                      {user.userData.email}
+                      {/* {user.userData.email} */}
                       </h1>
                        </span>
                      </h1>

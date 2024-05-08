@@ -31,11 +31,11 @@ const Cart = () => {
     // console.log(index);
   };
 
-  const updateCart = (item) => {
+  const updateCart = (index, item) => {
     dispatch(updateProduct(item));
     dispatch(isCart(false));
     // console.log("item",item);
-    navigate("/selectCart");
+    navigate("/selectCart", {state:{index:index}});
   };
 
   const handlePlaceOrder = () => {
@@ -53,7 +53,7 @@ const Cart = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div>
         <div>
           <h1>
@@ -126,7 +126,7 @@ const Cart = () => {
               <div style={{ display: "flex", gap: "2rem" }}>
                 <button
                   className="btn"
-                  onClick={() => updateCart(item)}
+                  onClick={() => updateCart(index,item)}
                   style={{ fontSize: "1.5rem" }}
                 >
                   Update
