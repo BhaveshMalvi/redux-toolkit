@@ -34,6 +34,8 @@ const Navbar = ({name}) => {
   // const [user, setUser] = useState();
   const [userData, setUserData] = useState();
 
+  const [search, setSearch] = useState(true);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   // const displayName = async () => {
   //   let data = await getUserDataFromStore
@@ -43,6 +45,10 @@ const Navbar = ({name}) => {
   //   setUserData(data)
   //   setUser((data.first_Name + " " + data.last_Name).toUpperCase());
   // };
+
+
+
+
 
 
 
@@ -84,6 +90,8 @@ console.log("qwer", renderName);
 
 
 
+
+
   if (true) {
     return (
       <div
@@ -100,6 +108,8 @@ console.log("qwer", renderName);
           zIndex: "1",
           height: "5rem",
         }}
+
+        className=" max-w-md mx-auto "
       >
         {/* <span className='logo' style={{marginLeft:"20px"}}><SiReactivex style={{ height: "60px", width: "60px", color: "#51347e" }} /></span> */}
         <SidebarComp user = {name} />
@@ -112,28 +122,26 @@ console.log("qwer", renderName);
         )} */}
 
         {/* {renderName} */}
-         <h1 style={{ color: '#51347e' }}>{name}</h1>
+         <span style={{ color: '#51347e', paddingLeft:"5px", width:"100%" }} className="navbar_name">{name}</span>
 
 
        
 
         {/* <button onClick={() => handleSignout()} style={{background:"red", border:"none", borderRadius:"10px", padding:"0.5rem", color:"white", boxShadow:"inset #790c0c 1px 0px 9px 4px"}}>Logout</button> */}
+    
+      {
+        search &&  <SearchProducts />
+      } 
 
         <div
-          style={{
-            display: "flex",
-            justifyContent: "end",
-            width: "70%",
-            alignItems: "center",
-            padding: "10px 0 10px 0",
-          }}
+          className="navbar_last"
         >
-           <div style={{display:"flex"}}>
-          <MdSavedSearch className="searchIcon" />  <SearchProducts />
-        </div>
+           {/* <div style={{display:"flex"}}> */}
+          {/* <MdSavedSearch className="searchIcon" />  */}
+        {/* </div> */}
           {/* <Category /> */}
-          <Link className="navLink" to="/">
-            <h2>
+          <Link className="navLink" to="/" onClick={() => setSearch(true)}>
+            <h2 style={{ display: "flex" }}>
               Home{" "}
               <span>
                 <SiHomeassistantcommunitystore
@@ -142,7 +150,7 @@ console.log("qwer", renderName);
               </span>{" "}
             </h2>
           </Link>
-          <Link className="navLink" to="/cart">
+          <Link className="navLink" to="/cart" onClick={() => setSearch(false)}>
             <h2 style={{ display: "flex" }}>
               Cart{" "}
               <span className="cartCount" style={{ marginLeft: "10px" }}>

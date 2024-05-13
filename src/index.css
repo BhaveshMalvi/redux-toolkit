@@ -32,6 +32,7 @@ img {
   border-radius: 10px;
   display: grid;
   box-shadow: 0px 1px 10px 4px black;
+  width:350px;
 
 }
 
@@ -45,13 +46,15 @@ img {
   border: none;
   outline: none;
   background: #8e63d2;
-  padding: 10px 10px;
+  padding: 5px 5px;
   color: #fff;
   border-radius: 5px;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: inset 1px 2px 10px 6px #51347e;
+  margin: 5px;
   
 }
 
@@ -90,7 +93,7 @@ img {
   justify-items: center;
   background: #fff;
   margin-bottom: 20px;
-  padding: 14px;
+  /* padding: 14px; */
   border-radius: 5px;
   box-shadow: 0px 1px 10px 4px black;
   display: grid;
@@ -117,15 +120,16 @@ select {
   border: none;
   outline: none;
   background: #8e63d2;
-  padding: 15px 15px;
+  padding: 10px 10px;
   color: #fff;
-  border-radius: 20px;
+  border-radius: 10px;
   font-weight: 900;
-  font-size: 30px;
+  font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   box-shadow: inset 1px 2px 10px 6px #51347e;
-  margin:10px
+  margin: 0px;
+
 }
 
 .btn-category:hover{
@@ -136,18 +140,18 @@ select {
   display: grid;
   /* margin: 100px 500px 0px 500px; */
   grid-template-columns: 1fr 1fr 1fr;
-  width:70%;
+  width:100%;
   align-items: center;
   justify-items: center;
   color: black;
   background: #fff;
   margin-bottom: 20px;
-  padding: 14px;
+  padding: 5px;
   border-radius: 1.5rem;
   background: white; 
   box-shadow: 0px 1px 10px 4px black;
   position: fixed;
-  bottom: 2rem;
+  bottom: 1rem;
 
 }
 
@@ -156,10 +160,10 @@ select {
       margin-top: -10px;
       margin-left: 80px;
       display: flex;
-      font-size: 1.5rem;
+      /* font-size: 1.5rem; */
       background-color: red;
       color: white;
-      width: 35%;
+      width: 25%;
       justify-content: center;
       border-radius:50%;
   
@@ -252,6 +256,11 @@ option {
 }
 
 
+.signUp_img{
+ display: flex;
+ align-items: center;
+ justify-content: center; 
+}
 
 
 
@@ -260,3 +269,174 @@ option {
 
 
 
+
+/* / Products Start / */
+.product-main-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  height: auto;
+  /* / padding: 2rem 0rem 2rem 58px; / */
+}
+
+.product-container {
+  /* / gap: 3rem; / */
+  display: grid;
+  height: 23rem;
+  width: 20rem;
+  border-radius: 6px;
+  border: 1px solid rgb(224, 215, 215);
+  background-color: white;
+}
+
+.img-container {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; 
+   position: relative; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.img-span {
+  position: absolute;
+  right: 0;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 15px;
+  padding: 3px 10px 3px 10px;
+  margin: 15px 15px 0px 0px;
+  background: #EAB308;
+  color: #FFFFFF;
+}
+
+.product-img {
+  height: 10rem;
+  width: 10rem;
+  align-items: center;
+}
+
+.product-offer {
+  height: 20px;
+  border: 1px solid red;
+}
+
+.product-info {
+  /* height: 40%;
+  width: 15rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem;
+  height: 10px;
+  font-size: 15px;
+  font-weight: 500;
+
+}
+
+.cart-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1rem;
+  gap: 7rem;
+}
+
+.cart-price {
+  font-size: 15px;
+  font-weight: 500;
+  color: #009F7F;
+}
+
+.cart-svg {
+  height: 15px;
+  margin: 0px 15px 5px 0px;
+}
+
+.cart-btn {
+  height: 2.5rem;
+  width: 6rem;
+  border-radius: 2rem;
+  border: 1px solid #d7e4e1;
+  font-size: 15px;
+  font-weight: 500;
+  color: #009F7F;
+  transition: background 0.3s ease-in-out;
+}
+
+.cart-btn:hover {
+  background: #009F7F;
+  border: #009F7F;
+  color: white;
+}
+/* / Products End / */
+
+
+    .navbar_last{
+             display: flex;
+            justify-content: end;
+            width: 70%;
+            align-items :center ;
+            padding: 10px 0 10px 0;          
+    }
+
+
+
+
+    /* .update_delete_btn{
+      
+    } */
+
+
+
+
+
+/* If the screen size is 600px wide or less, hide the element */
+
+
+@media only screen and (max-width: 774px) {
+   .navbar_name {
+    display: none;
+  }
+
+  .product-container {
+  /* / gap: 3rem; / */
+  display: grid;
+  height: 23rem;
+  width: 15rem;
+  border-radius: 6px;
+  border: 1px solid rgb(224, 215, 215);
+  background-color: white;
+}
+
+.cart-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1rem;
+    gap: 2rem;
+}
+
+.search_bar{
+  display: block;
+}
+
+.heading_cart{
+  display: none;
+}
+
+
+}
+
+
+@media only screen and (max-width: 574px){
+ 
+  .search_bar{
+    /* display: none; */
+    position: absolute;
+    top: 5rem;
+    margin-top: 5px;
+  }
+}

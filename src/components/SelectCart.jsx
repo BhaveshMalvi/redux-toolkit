@@ -132,10 +132,10 @@ function SelectCart() {
                         <img src={cart.image} alt="" style={{ width: "50%", height: "40vh", margin: "0px", padding: "2rem", borderRadius: "40px", boxShadow: " inset 1px 1px 20px 7px black" }} />
                         <div>
                             <h1>About <span><FcAbout /></span> </h1>
-                            <h2 style={{ fontWeight: "500" }}> "{cart.description}"</h2>
+                            <h2 style={{ fontWeight: "500", fontSize:"large" }}> "{cart.description}"</h2>
                         </div>
                     </div>
-                    <h2>{cart.title}</h2>
+                    <h4>{cart.title}</h4>
                     <div style={{ fontSize: "2rem", fontWeight: "900" }}>Price: ${cart.price}</div>
 
                     {
@@ -150,9 +150,9 @@ function SelectCart() {
                         :
                         <>
                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <buttton onClick={(e) => handleDec(e)}><HiMinusCircle style={{ width: "70px", height: "70px" }} color='red' /></buttton>
-                        <div style={{ fontSize: "3rem", padding: "20px", fontWeight: "900" }}><span>{number}</span></div>
-                        <buttton onClick={(e) => handleInc(e)}><HiPlusCircle style={{ width: "70px", height: "70px", color: "green" }} /></buttton>
+                        <buttton onClick={(e) => handleDec(e)}><HiMinusCircle style={{ width: "50px", height: "50px" }} color='red' /></buttton>
+                        <div style={{ fontSize: "2rem", padding: "20px", fontWeight: "900" }}><span>{number}</span></div>
+                        <buttton onClick={(e) => handleInc(e)}><HiPlusCircle style={{ width: "50px", height: "50px", color: "green" }} /></buttton>
                     </div>
                     <button className='btn-category' onClick={() => goToCart()}> Add To Cart </button>
                         </>
@@ -174,20 +174,20 @@ function SelectCart() {
                         <img src={selectUpdateCart.image} alt="" style={{ width: "50%", height: "40vh", margin: "0px", padding: "2rem", borderRadius: "40px", boxShadow: " inset 1px 1px 20px 7px black" }} />
                         <div>
                             <h1>About <span><FcAbout /></span> </h1>
-                            <h2 style={{ fontWeight: "500" }}> "{selectUpdateCart.description}"</h2>
+                            <h2 style={{ fontWeight: "500", fontSize:"large" }}> "{selectUpdateCart.description}"</h2>
                         </div>
 
                     </div>
 
-                    <h2>{selectUpdateCart.title}</h2>
+                    <h4>{selectUpdateCart.title}</h4>
 
 
                     <div style={{ fontSize: "2rem", fontWeight: "900" }}>Price: ${selectUpdateCart.price}</div>
 
                     <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <buttton onClick={(e) => UpdatehandleDec(e)}><HiMinusCircle style={{ width: "70px", height: "70px" }} color='red' /></buttton>
-                        <div style={{ fontSize: "3rem", padding: "20px", fontWeight: "900" }}><span>{updatenum}</span></div>
-                        <buttton onClick={(e) => UpdatehandleInc(e)}><HiPlusCircle style={{ width: "70px", height: "70px", color: "green" }} /></buttton>
+                        <buttton onClick={(e) => UpdatehandleDec(e)}><HiMinusCircle style={{ width: "50px", height: "50px" }} color='red' /></buttton>
+                        <div style={{ fontSize: "2rem", padding: "20px", fontWeight: "900" }}><span>{updatenum}</span></div>
+                        <buttton onClick={(e) => UpdatehandleInc(e)}><HiPlusCircle style={{ width: "50px", height: "50px", color: "green" }} /></buttton>
 
                     </div>
 

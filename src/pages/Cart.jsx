@@ -52,34 +52,12 @@ const Cart = () => {
   }
 
   return (
-    <div>
+    <div className=" mt-3">
       {/* <Navbar /> */}
       <div>
-        <div>
-          <h1>
-            <div
-              style={{ display: "flex", width: "100%", justifyContent: "end" }}
-            >
-              {" "}
-              <div>
-                <FaCartPlus />
-              </div>{" "}
-              {/* <span
-                style={{
-                  position: "relative",
-                  top: " -14px",
-                  right: "15px",
-                  fontSize: "19px",
-                }}
-              >
-                {cartProducts.length}{" "}
-              </span> */}
-              Cart
-            </div>
-          </h1>
-        </div>
+        
 
-        <div>
+        <div className=" heading_cart">
           <div
             className="cartCard"
             style={{
@@ -111,30 +89,31 @@ const Cart = () => {
                 <img src={item.image} style={{width:"100px", borderRadius:"10%"}} />
               </div>
 
-              <h2>
+              <h4>
                 <span> ${item.price}</span>
-              </h2>
+              </h4>
 
-              {/* <marquee> */}
-                <h3>{item.title}</h3>
-              {/* </marquee> */}
+              <marquee>
+                <h6>{item.title}</h6>
+              </marquee>
 
               <div>
-                <h2>${item.price * item.quentity}</h2>
+                <h4>${item.price * item.quentity}</h4>
               </div>
 
-              <div style={{ display: "flex", gap: "2rem" }}>
+              {/* <div style={{ display: "flex", gap: "2rem" }}> */}
+              <div className="update_delete_btn" >
                 <button
                   className="btn"
                   onClick={() => updateCart(index,item)}
-                  style={{ fontSize: "1.5rem" }}
+
                 >
                   Update
                 </button>
                 <button
                   className="btn"
                   onClick={() => removeFromCart(index)}
-                  style={{ fontSize: "1.5rem" }}
+
                 >
                   Delete
                 </button>
